@@ -1,0 +1,48 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 19:49:56
+ * @LastEditTime: 2021-03-02 19:58:00
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /Html/canvas/pic/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id='canvas' width='500' height='500' style='background:yellow'>你的浏览器不支持canvas</canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const image = new Image(60, 45); // Using optional size for image
+        image.onload = drawImageActualSize; // Draw when image has loaded
+
+        // Load an image of intrinsic size 300x227 in CSS pixels
+        image.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+
+        function drawImageActualSize() {
+            // Use the intrinsic size of image in CSS pixels for the canvas element
+            canvas.width = this.naturalWidth;
+            canvas.height = this.naturalHeight;
+
+            // Will draw the image as 300x227, ignoring the custom size of 60x45
+            // given in the constructor
+            ctx.drawImage(this, 0, 0);
+
+            // To use the custom size we'll have to specify the scale parameters
+            // using the element's width and height properties - lets draw one
+            // on top in the corner:
+            ctx.drawImage(this, 0, 0, this.width, this.height);
+        }
+    </script>
+</body>
+
+</html>

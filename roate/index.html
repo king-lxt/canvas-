@@ -1,0 +1,62 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 20:02:24
+ * @LastEditTime: 2021-03-03 00:07:32
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /Html/canvas/roate/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id='canvas' width='1000' height='1000' style='background:yellow'>你的浏览器不支持canvas</canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        // 绘图环境
+        var ctx = canvas.getContext('2d');
+        // 开始画
+        ctx.beginPath();
+        ctx.moveTo(100, 200);
+        ctx.lineTo(100, 300);
+        ctx.lineTo(200, 250);
+        ctx.closePath();
+        // 先闭合在画线
+        ctx.stroke();
+
+        // 实心三角形
+        ctx.beginPath();
+        ctx.moveTo(300, 200);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(400, 250);
+        ctx.fillStyle = '#ccc';
+        ctx.fill();
+        ctx.closePath();
+
+
+        // 旋转
+        // 以上面实现三角形（300，200）为原点旋转
+        ctx.save();
+        ctx.translate(300, 200); // x,y坐标（300, 200）为起始坐标
+        ctx.rotate(30 * Math.PI / 180);
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0); // ctx.moveTo(300, 200) 的坐标点 减去（300，200）
+        ctx.lineTo(0, 100); // ctx.lineTo(300, 300)的坐标点 减去（300，200）
+        ctx.lineTo(100, 50); // ctx.lineTo(400, 250)的坐标点 减去（300，200）
+        ctx.fillStyle = '#c0c';
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.restore();
+    </script>
+</body>
+
+</html>

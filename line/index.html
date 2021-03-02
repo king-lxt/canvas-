@@ -1,0 +1,53 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 19:13:47
+ * @LastEditTime: 2021-03-03 00:08:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /Html/canvas/line/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id='canvas' width='500' height='500' style='background:yellow'>你的浏览器不支持canvas</canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        // 绘图环境
+        var ctx = canvas.getContext('2d');
+        // 画线段
+        ctx.beginPath();
+        ctx.moveTo(20, 20); // x,y坐标（起始坐标）
+        ctx.lineTo(100, 20); // x,y坐标（结束坐标）
+        ctx.strokeStyle = '#39f'; // 画笔的颜色
+        ctx.lineWidth = 7; // 线的粗细
+        ctx.stroke();
+        ctx.closePath();
+
+
+        // 旋转
+        // 相当于保存存原来的元素，重新再画元素
+        ctx.save();
+
+        ctx.translate(20, 20); // 重置x,y坐标点 （20，20）作为原点
+        ctx.rotate(90 * Math.PI / 180);
+        ctx.beginPath();
+        ctx.moveTo(0, 0); // x,y坐标（起始坐标） ctx.moveTo(20, 20) 减去（20，20）
+        ctx.lineTo(80, 0); // x,y坐标（结束坐标） ctx.lineTo(100, 20); 减去（20，20）
+        ctx.strokeStyle = '#f9f'; // 画笔的颜色
+        ctx.lineWidth = 7; // 线的粗细
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.restore();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 19:13:47
+ * @LastEditTime: 2021-03-02 19:28:15
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /Html/canvas/arc/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id='canvas' width='500' height='500' style='background:yellow'>你的浏览器不支持canvas</canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        // 绘图环境
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        // x
+        // 圆弧中心（ 圆心） 的 x 轴坐标。
+        // y
+        // 圆弧中心（ 圆心） 的 y 轴坐标。
+        // radius
+        // 圆弧的半径。
+        // startAngle
+        // 圆弧的起始点， x轴方向开始计算， 单位以弧度表示。
+        // endAngle
+        // 圆弧的终点， 单位以弧度表示。
+        // anticlockwise 可选
+        // 可选的Boolean值， 如果为 true， 逆时针绘制圆弧， 反之， 顺时针绘制。
+        ctx.arc(200, 200, 50, 0, 360, false);
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'blue'
+        ctx.stroke();
+        // 实心圆的填充 start
+        ctx.fillStyle = 'red'
+        ctx.fill();
+        // 实心圆的填充 END
+        ctx.closePath();
+    </script>
+</body>
+
+</html>

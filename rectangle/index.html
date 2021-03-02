@@ -1,0 +1,38 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 19:28:24
+ * @LastEditTime: 2021-03-02 19:36:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /Html/canvas/rectangle/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id='canvas' width='500' height='500' style='background:yellow'>你的浏览器不支持canvas</canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        // 绘图环境
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+
+        // 开始画
+        ctx.rect(10, 10, 150, 100); // 左上角放在(10, 10)，把它的大小设置成宽150高100。.
+        ctx.stroke();
+        // 填充
+        ctx.fillStyle = '#ccc';
+        ctx.fill();
+
+        ctx.closePath();
+    </script>
+</body>
+
+</html>
